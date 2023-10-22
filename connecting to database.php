@@ -1,3 +1,4 @@
+
 //hello there. this is a code to connect to the database using localhost the database name is marksprintout
 //Firts method by using MySQL PDO
 <?php
@@ -32,3 +33,30 @@ if ($conn->connect_error) {
 ?>
 
 
+//third method SQLite Database Connection:
+<?php
+$dbFile = "marksprintout.db";
+
+try {
+    $conn = new PDO("sqlite:$dbFile");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+?>
+
+
+
+//fouth method PostgreSQL Database Connection (using PDO):
+<?PHP
+$dsn = "pgsql:host=localhost;dbname=marksprintout";
+$username = "root";
+$password = "";
+
+try {
+    $conn = new PDO($dsn, $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+?>
