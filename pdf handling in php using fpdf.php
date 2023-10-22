@@ -9,3 +9,5 @@ $pdf->Cell(40, 10, 'Hello, World!');
 $pdf->Output(); //Output to Browser as pdf
 //$pdf->Output('my_pdf.pdf', 'F'); //Save to File
 ?>
+
+
