@@ -135,3 +135,75 @@ Account balance for Alice: $500
 Deposited 300 dollars. New balance: $800
 Withdrawn 800 dollars. New balance: $0
 Account balance for Alice: $0
+
+
+
+
+
+
+
+//example 3 for student marks 
+<?php
+// Define a Student class to represent a student's marks
+class Student {
+    private $name;          // Student's name
+    private $scores = [];   // An array to store test scores
+
+    // Constructor to initialize the student's name
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    // Method to add a test score
+    public function addScore($score) {
+        if ($score >= 0 && $score <= 100) {
+            $this->scores[] = $score;
+            echo "$this->name's test score added: $score\n";
+        } else {
+            echo "Invalid test score for $this->name: $score\n";
+        }
+    }
+
+    // Method to calculate the average score
+    public function calculateAverage() {
+        if (count($this->scores) > 0) {
+            $total = array_sum($this->scores);
+            $average = $total / count($this->scores);
+            echo "$this->name's average score: $average\n";
+        } else {
+            echo "$this->name has no test scores to calculate an average.\n";
+        }
+    }
+}
+
+// Create a Student object for John
+$john = new Student("John");
+
+// Add test scores for John
+$john->addScore(85);
+$john->addScore(92);
+$john->addScore(78);
+
+// Calculate John's average score
+$john->calculateAverage();
+
+// Create a Student object for Alice
+$alice = new Student("Alice");
+
+// Add test scores for Alice
+$alice->addScore(95);
+$alice->addScore(89);
+
+// Calculate Alice's average score
+$alice->calculateAverage();
+?>
+
+//output for the above code 
+John's test score added: 85
+John's test score added: 92
+John's test score added: 78
+John's average score: 85
+Alice's test score added: 95
+Alice's test score added: 89
+Alice's average score: 92
+
