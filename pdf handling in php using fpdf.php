@@ -5,6 +5,22 @@ require('fpdf/fpdf.php');//include the fpdf downloaded from FPDF library from th
 $pdf = new FPDF();
 $pdf->AddPage();//Use the AddPage method to add a page to your PDF document.
 $pdf->SetFont('Arial', 'B', 16); //Set Font and Text:
+//Also you can Use OOP in creating classes that can add attributes to specific areas you need to style in the PDF. eg. for header and footer
+// Define a custom PDF class that extends FPDF for layout customization
+class PDF extends FPDF {
+    // Header method for displaying a header (optional)
+    function Header() {
+        $this->SetFont('Arial', 'B', 12);
+        $this->Cell(0, 10, 'Student Marks Report', 0, 1, 'C');
+    }
+
+    // Footer method for displaying a footer with page number (optional)
+    function Footer() {
+        $this->SetY(-15);
+        $this->SetFont('Arial', 'I', 8);
+        $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
+    }
+}
 //$pdf->Cell(40, 10, 'Hello, World!');//to test by displaying hellow world in the pdf
 $pdf->Output(); //Output to Browser as pdf
 //$pdf->Output('my_pdf.pdf', 'F'); //Save to File
